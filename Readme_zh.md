@@ -114,7 +114,7 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ |
 停止p2p并释放内存。
 
 #### `engine.destroy()`
-停止p2p、销毁engine并释放内存。在Hls.js销毁时会自动调用。
+停止p2p、销毁engine并释放内存。
 
 ### P2PEngine事件
 
@@ -158,8 +158,8 @@ p2pConfig: {
 }
 ```
 
-#### 解决动态mpd路径问题
-某些流媒体提供商的mmpd是动态生成的，不同节点的mpd地址不一样，例如example.com/clientId1/file.mpd和example.com/clientId2/file.mpd,
+#### 解决动态 MPD 路径问题
+某些流媒体提供商的 MPD 是动态生成的，不同节点的mpd地址不一样，例如example.com/clientId1/file.mpd和example.com/clientId2/file.mpd,
 而本插件默认使用mpd作为channelId。这时候就要构造一个共同的chanelId，使实际观看同一直播/视频的节点处在相同频道中。`强烈建议在chanelId中加入唯一标识符，防止与其他频道产生冲突。`
 ```javascript
 p2pConfig: {
@@ -185,7 +185,7 @@ p2pConfig: {
 ```
 
 #### 允许Http Range请求
-当对等端上行带宽不够时，可能导致p2p传输超时而转向http下载，原本p2p下载的数据无法复用。Http Range请求用于补足p2p下载超时的剩余部分数据，要开启Http Range，首先需要源服务器支持，请参考[允许Http Range请求](../m3u8.md?id=允许http-range请求)，然后增加以下配置：
+当对等端上行带宽不够时，可能导致p2p传输超时而转向http下载，原本p2p下载的数据无法复用。Http Range请求用于补足p2p下载超时的剩余部分数据，要开启Http Range，首先需要源服务器支持，然后增加以下配置：
 ```javascript
 p2pConfig: {
     useHttpRange: true,
