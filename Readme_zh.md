@@ -158,13 +158,13 @@ p2pConfig: {
 }
 ```
 
-#### 解决动态m3u8路径问题
-某些流媒体提供商的m3u8是动态生成的，不同节点的m3u8地址不一样，例如example.com/clientId1/file.m3u8和example.com/clientId2/file.m3u8,
-而本插件默认使用m3u8作为channelId。这时候就要构造一个共同的chanelId，使实际观看同一直播/视频的节点处在相同频道中。`强烈建议在chanelId中加入唯一标识符，防止与其他频道产生冲突。`
+#### 解决动态mpd路径问题
+某些流媒体提供商的mmpd是动态生成的，不同节点的mpd地址不一样，例如example.com/clientId1/file.mpd和example.com/clientId2/file.mpd,
+而本插件默认使用mpd作为channelId。这时候就要构造一个共同的chanelId，使实际观看同一直播/视频的节点处在相同频道中。`强烈建议在chanelId中加入唯一标识符，防止与其他频道产生冲突。`
 ```javascript
 p2pConfig: {
-    channelId: function (m3u8Url) {
-        const formatedUrl = 'YOUR_UNIQUE_ID' + format(m3u8Url);   // 忽略差异部分，构造一个一致的channelId
+    channelId: function (mpdUrl) {
+        const formatedUrl = 'YOUR_UNIQUE_ID' + format(mpdUrl);   // 忽略差异部分，构造一个一致的channelId
         return formatedUrl;
     }
 }
