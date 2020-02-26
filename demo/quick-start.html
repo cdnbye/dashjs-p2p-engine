@@ -20,16 +20,18 @@
     </table>
 </div>
 <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-<script src="../dist/dashjs-p2p-engine.js"></script>
+<script src="../dist/dashjs-p2p-engine.min.js"></script>
 <script>
 
     var url = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
-    var player = dashjs.MediaPlayer().create();
-    new P2PEngine(player);
+    var player = dashjs.MediaPlayer().create()
+    var p2pConfig = {
+        logLevel: 'debug',
+    }
+    new P2PEngine(player, p2pConfig);
     player.initialize(document.querySelector("#videoPlayer"), url, true);
     player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, ({ request }) => {
         var source = undefined;
-        // console.warn(request)
         if (request.loadByHTTP === true) {
             source = 'HTTP';
         } else if (request.loadByP2P === true) {
