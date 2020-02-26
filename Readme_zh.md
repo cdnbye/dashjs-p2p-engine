@@ -23,12 +23,6 @@ P2P技术使观看相同内容的用户之间可以相互分享数据，不仅�
 - Tracker服务器根据访问IP的ISP、地域等进行智能调度
 - API已经固化，新版本完全兼容旧版本代码
 
-## 通知
-为便于管理，从4月1日起，所有未在后台管理系统(https://oms.cdnbye.com) 绑定的域名停止提供P2P服务，请及时前往绑定域名，以免受到影响。
-
-## 演示Demo
-打开2个相同的网页：[demo](https://demo.cdnbye.com/)
-
 ## 快速入门
 #### 快速入门Demo
 将[quick-start.html](demo/quick-start.html)拷贝到您的网页中并运行。再打开另一个相同的网页。见证奇迹的时候到了！您已在两个网页之间建立了一个P2P连接，在不安装任何插件的情况下。如果在这个频道中（一个m3u8标识了一个频道）没有其它参与者，那么您打开的第一个网页将作为种子为第二个网页提供数据。
@@ -36,11 +30,11 @@ P2P技术使观看相同内容的用户之间可以相互分享数据，不仅�
 ## 浏览器支持情况
 由于WebRTC已成为HTML5标准，目前大部分主流浏览器都已经支持。CDNBye的浏览器兼容性取决于WebRTC和dash.js。需要注意的是iOS版Safari由于不支持MediaSource API，因此也不支持dash.js。
 
- 兼容性|Chrome | Firefox | macOS Safari| 安卓微信/QQ | Opera | IE | Edge| iOS Safari | 
+ 兼容性|Chrome | Firefox | macOS Safari| 安卓微信/QQ | Opera | Edge | IE | iOS Safari | 
 :-: | :-: | :-: | :-: | :-: | :-: | :-:| :-:| :-:
-WebRTC Datachannel | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
+WebRTC Datachannel | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ✔ |
 dash.js | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ |
-CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | 
+CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | 
 
 ## 集成
 通过script标签引入最新版本：
@@ -88,6 +82,9 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ |
 
 ## 客户案例
 [<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531253035445&di=7af6cc9ad4abe3d06ba376af22d85131&imgtype=0&src=http%3A%2F%2Fimg.kuai8.com%2Fattaches%2Fintro%2F1213%2F201612131436417407.png" width="120">](https://egame.qq.com/?hls=1&p2p=1&_debug=1)
+
+## 相关项目
+- [hlsjs-p2p-engine](https://gitee.com/cdnbye/hlsjs-p2p-engine) - HLS协议的Web端P2P流媒体方案。
 
 ## FAQ
 我们收集了一些[常见问题](https://docs.cdnbye.com/#/FAQ)。在报告issue之前请先查看一下。
