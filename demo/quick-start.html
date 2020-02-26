@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <title>Dash.js Rocks</title>
+    <style>
+        video {
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <video id="videoPlayer" controls></video>
+    <p id="version"></p>
+    <h3>download info:</h3>
+    <p id="info"></p>
+    <table id="table-body">
+        <tbody ></tbody>
+    </table>
+</div>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<script src="../dist/dashjs-p2p-engine.js"></script>
+<script>
+
+    var url = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
+    var player = dashjs.MediaPlayer().create();
+    new P2PEngine(player);
+    player.initialize(document.querySelector("#videoPlayer"), url, true);
+    player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, ({ request }) => {
+        var source = undefined;
+        // console.warn(request)
+        if (request.loadByHTTP === true) {
+            source = 'HTTP';
+        } else if (request.loadByP2P === true) {
+            source = 'P2P';
+        }
+        addToTable(request.representationId, request.bytesTotal, request.mediaType, source);
+    });
+    document.querySelector('#version').innerText = `dash.js version: ${player.getVersion()}  cdnbye version: ${P2PEngine.version}`;
+    function addToTable(url, downloaded, type, source) {
+        var infoStr = `download ${url}(size:${downloaded}B type:${type}) by ${source}`;
+        document.querySelector('#table-body tbody').innerHTML +=
+            `<tr style="text-align: center">
+                    <td>${infoStr}</td>
+                </tr>`
+    };
+</script>
+</body>
+</html>

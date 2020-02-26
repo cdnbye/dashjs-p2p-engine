@@ -1,0 +1,52 @@
+{
+  "name": "cdnbye-dash",
+  "version": "0.0.2",
+  "description": "Save Your Bandwidth using WebRTC.",
+  "main": "./dist/dashjs-p2p-engine.min.js",
+  "scripts": {
+    "publish": "npm publish",
+    "git-push": "git add . && git commit -m 'update' && git push origin master",
+    "git-pull": "git pull origin master",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/cdnbye_dev/dashjs-p2p-engine"
+  },
+  "dependencies": {
+    "dashjs": "^3.0.2",
+    "get-browser-rtc": "^1.0.2",
+    "reconnecting-websocket": "^3.2.2",
+    "url-toolkit": "^2.1.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "mocha": "^4.1.0",
+    "node-static": "^0.7.10",
+    "webpack": "^3.10.0",
+    "websocket": "^1.0.25"
+  },
+  "author": "cdnbye",
+  "license": "ISC",
+  "keywords": [
+    "html5",
+    "WebRTC",
+    "video",
+    "mse",
+    "player",
+    "p2p",
+    "peer-to-peer",
+    "dash",
+    "dashjs",
+    "cdnbye",
+    "bittorrent",
+    "webrtc data channel",
+    "MPEG-dash"
+  ]
+}
