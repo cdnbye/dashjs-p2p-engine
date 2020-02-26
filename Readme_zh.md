@@ -74,7 +74,123 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ |
 
 
 ## API文档
+### 实例化与参数配置
+#### `var engine = new P2PEngine(player, {p2pConfig: [opts]});`  
+创建一个新的`P2PEngine`实例，其中 player 是`dashjs`的MediaPlayer实例。
 
+如果指定了`opts`，那么对应的默认值将会被覆盖。
+
+| 字段 | 类型 | 默认值 | 描述 |
+| :-: | :-: | :-: | :-: |
+| `logLevel` | string or boolean | 'none' | log的等级，分为warn、error、none，设为true等于warn，设为false等于none。
+| `live` | boolean | false | 直播或者点播模式，建议在点播模式下设为false，p2p插件会预缓存buffer以避免卡顿。
+| `wsSignalerAddr` | string | 'wss://signal.cdnbye.com' | 信令服务器地址。
+| `announce` | string | 'https://tracker.cdnbye.com/v1' | tracker服务器地址。
+| `wsMaxRetries` | number | 15 |websocket连接重试次数。
+| `wsReconnectInterval` | number | 30 | websocket重连时间间隔。
+| `memoryCacheLimit` | Object | {"pc": 1024 * 1024 * 512, "mobile": 1024 * 1024 * 256} | p2p缓存的最大数据量，分为PC和mobile。
+| `p2pEnabled` | boolean | true | 是否开启P2P。
+| `dcDownloadTimeout` | number | 25 | p2p下载的最大超时时间。
+| `webRTCConfig` | Object | {} | 用于配置stun和datachannel的[字典](https://github.com/feross/simple-peer)。
+| `useHttpRange` | boolean | false | 在可能的情况下使用Http Range请求来补足p2p下载超时的剩余部分数据（直播模式下默认是true）。
+| `getStats` | function | - | 获取p2p统计信息，包括totalP2PDownloaded、totalP2PUploaded和totalHTTPDownloaded。
+| `getPeerId` | function | - | 获取本节点的Id，当从服务端获取到peerId时回调该事件。
+| `getPeersInfo` | function | - | 获取成功连接的节点的信息，当与新的节点成功建立p2p连接时回调该事件。
+| `channelId` | function | - | 标识channel的字段，同一个channel的用户可以共享数据。（参考高级用法）
+| `validateSegment` | function | - | 用于校验从其它节点下载的ts文件的合法性。
+
+### P2PEngine API
+
+#### `P2PEngine.version` (static method)
+获取`P2PEngine`的版本号。
+
+#### `P2PEngine.isSupported()` (static method)
+判断当前浏览器是否支持WebRTC datachannel。
+
+#### `engine.enableP2P()`
+在p2p暂停或未启动情况下启动p2p。
+
+#### `engine.disableP2P()`
+停止p2p并释放内存。
+
+#### `engine.destroy()`
+停止p2p、销毁engine并释放内存。在Hls.js销毁时会自动调用。
+
+### P2PEngine事件
+
+#### `engine.on('peerId', function (peerId) {})`
+当从服务端获取到peerId时回调该事件。
+
+#### `engine.on('peers', function (peers) {})`
+当与新的节点成功建立p2p连接时回调该事件。
+
+####`engine.on('stats', function (stats) {})`
+该回调函数可以获取p2p信息，包括：</br>
+stats.totalHTTPDownloaded: 从HTTP(CDN)下载的数据量（单位KB）</br>
+stats.totalP2PDownloaded: 从P2P下载的数据量（单位KB）</br>
+stats.totalP2PUploaded: P2P上传的数据量（单位KB）
+
+### 高级用法
+#### 通过向p2pConfig传入getStats获取p2p下载信息
+```javascript
+p2pConfig: {
+    getStats: function (totalP2PDownloaded, totalP2PUploaded, totalHTTPDownloaded) {
+        // do something
+    }
+}
+```
+
+#### 通过向p2pConfig传入getPeerId获取本节点的Id
+```javascript
+p2pConfig: {
+    getPeerId: function (peerId) {
+        // do something
+    }
+}
+```
+
+#### 通过向p2pConfig传入getPeersInfo获取成功连接的节点的信息
+```javascript
+p2pConfig: {
+    getPeersInfo: function (peers) {
+        // do something
+    }
+}
+```
+
+#### 解决动态m3u8路径问题
+某些流媒体提供商的m3u8是动态生成的，不同节点的m3u8地址不一样，例如example.com/clientId1/file.m3u8和example.com/clientId2/file.m3u8,
+而本插件默认使用m3u8作为channelId。这时候就要构造一个共同的chanelId，使实际观看同一直播/视频的节点处在相同频道中。`强烈建议在chanelId中加入唯一标识符，防止与其他频道产生冲突。`
+```javascript
+p2pConfig: {
+    channelId: function (m3u8Url) {
+        const formatedUrl = 'YOUR_UNIQUE_ID' + format(m3u8Url);   // 忽略差异部分，构造一个一致的channelId
+        return formatedUrl;
+    }
+}
+```
+
+#### 配置STUN服务器
+```javascript
+p2pConfig: {
+    webRTCConfig: { 
+        config: {         // custom webrtc configuration (used by RTCPeerConnection constructor)
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' }, 
+                { urls: 'stun:global.stun.twilio.com:3478?transport=udp' }
+            ] 
+        }
+    }
+}
+```
+
+#### 允许Http Range请求
+当对等端上行带宽不够时，可能导致p2p传输超时而转向http下载，原本p2p下载的数据无法复用。Http Range请求用于补足p2p下载超时的剩余部分数据，要开启Http Range，首先需要源服务器支持，请参考[允许Http Range请求](../m3u8.md?id=允许http-range请求)，然后增加以下配置：
+```javascript
+p2pConfig: {
+    useHttpRange: true,
+}
+```
 
 ## 后台管理系统
 在接入P2P插件后，访问`https://oms.cdnbye.com`，注册并绑定域名，即可查看该域名的P2P流量、在线人数、用户地理分布等信息。
