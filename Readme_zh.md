@@ -9,7 +9,7 @@
 </p>
 
 P2P技术使观看相同内容的用户之间可以相互分享数据，不仅能效降低视频/直播网站的带宽成本，还可以提升用户的播放体验，降低卡顿、二次缓存的发生率。
-另外，随着H5的普及，flash逐渐被淘汰已成为不可逆转的趋势。而在H5采用的视频传输格式中，dash由于兼容ios和android、可以穿过任何允许HTTP数据通过的防火墙、容易使用内容分发网络来传输媒体流和码率自适应等众多优势而在业界得到广泛使用。通过使用[dash.js](https://github.com/Dash-Industry-Forum/dash.js)这个第三方库，几乎所有现代浏览器都可以播放dash视频。dash天生分片传输的优势，使其可以采用p2p的方式进行传输，从而减小服务器的负担。在web端，无插件化实现p2p传输能力的最好选择就是[WebRTC](https://zh.wikipedia.org/wiki/WebRTC)技术，与hls.js类似，WebRTC也支持几乎所有现代浏览器。本项目是一个dash.js的插件，通过WebRTC datachannel技术，在不影响用户体验的前提下，最大化p2p率，是面向未来的Web P2P技术。
+另外，随着H5的普及，flash逐渐被淘汰已成为不可逆转的趋势。而在H5采用的视频传输格式中，dash由于兼容ios和android、可以穿过任何允许HTTP数据通过的防火墙、容易使用内容分发网络来传输媒体流和码率自适应等众多优势而在业界得到广泛使用。通过使用[dash.js](https://github.com/Dash-Industry-Forum/dash.js)这个第三方库，几乎所有现代浏览器都可以播放dash视频。dash天生分片传输的优势，使其可以采用p2p的方式进行传输，从而减小服务器的负担。在web端，无插件化实现p2p传输能力的最好选择就是[WebRTC](https://zh.wikipedia.org/wiki/WebRTC)技术，与dash.js类似，WebRTC也支持几乎所有现代浏览器。本项目是一个dash.js的插件，通过WebRTC datachannel技术，在不影响用户体验的前提下，最大化p2p率，是面向未来的Web P2P技术。
 <br>想知道P2P效果如何吗，登录[后台管理系统](https://oms.cdnbye.com)并绑定域名就可以查看啦！
 
 该插件的优势如下：
@@ -34,12 +34,12 @@ P2P技术使观看相同内容的用户之间可以相互分享数据，不仅�
 将[quick-start.html](demo/quick-start.html)拷贝到您的网页中并运行。再打开另一个相同的网页。见证奇迹的时候到了！您已在两个网页之间建立了一个P2P连接，在不安装任何插件的情况下。如果在这个频道中（一个m3u8标识了一个频道）没有其它参与者，那么您打开的第一个网页将作为种子为第二个网页提供数据。
 
 ## 浏览器支持情况
-由于WebRTC已成为HTML5标准，目前大部分主流浏览器都已经支持。CDNBye的浏览器兼容性取决于WebRTC和hls.js。需要注意的是iOS版Safari由于不支持MediaSource API，因此也不支持hls.js(不过Safari原生支持HLS播放)。
+由于WebRTC已成为HTML5标准，目前大部分主流浏览器都已经支持。CDNBye的浏览器兼容性取决于WebRTC和dash.js。需要注意的是iOS版Safari由于不支持MediaSource API，因此也不支持dash.js。
 
  兼容性|Chrome | Firefox | macOS Safari| 安卓微信/QQ | Opera | IE | Edge| iOS Safari | 
 :-: | :-: | :-: | :-: | :-: | :-: | :-:| :-:| :-:
 WebRTC Datachannel | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ✔ |
-Hls.js | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ |
+dash.js | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ |
 CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ❌ | ❌ | 
 
 ## 集成
