@@ -202,7 +202,7 @@ Bind your domain in `https://oms.cdnbye.com`, where you can view p2p-related inf
 - [hlsjs-p2p-engine](https://github.com/cdnbye/hlsjs-p2p-engine) - Web Video Delivery Technology with No Plugins for hls.js.
 
 ## FAQ
-We have collected some [frequently asked questions](https://docs.cdnbye.com/#/en/FAQ). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://p2p.cdnbye.com/en/views/FAQ.html). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contact Us
 Email: service@cdnbye.com
