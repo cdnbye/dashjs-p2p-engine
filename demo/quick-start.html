@@ -29,7 +29,7 @@
     var p2pConfig = {
         logLevel: 'debug',
     }
-    new P2PEngine(player, p2pConfig);
+    new P2PEngineDash(player, p2pConfig);
     player.initialize(document.querySelector("#videoPlayer"), url, true);
     player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, ({ request }) => {
         var source = undefined;
@@ -40,7 +40,7 @@
         }
         addToTable(request.representationId, request.bytesTotal, request.mediaType, source);
     });
-    document.querySelector('#version').innerText = `dash.js version: ${player.getVersion()}  cdnbye version: ${P2PEngine.version}`;
+    document.querySelector('#version').innerText = `dash.js version: ${player.getVersion()}  cdnbye version: ${P2PEngineDash.version}`;
     function addToTable(url, downloaded, type, source) {
         var infoStr = `download ${url}(size:${downloaded}B type:${type}) by ${source}`;
         document.querySelector('#table-body tbody').innerHTML +=
