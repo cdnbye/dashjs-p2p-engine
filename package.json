@@ -1,10 +1,10 @@
 {
   "name": "cdnbye-dash",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Save Your Bandwidth using WebRTC.",
   "main": "./dist/dashjs-p2p-engine.min.js",
   "scripts": {
-    "git-push": "git add . && git commit -m 'release v0.1.0' && git push origin master",
+    "git-push": "git add . && git commit -m 'release v0.1.1' && git push origin master",
     "git-pull": "git pull origin master",
     "publish": "npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"

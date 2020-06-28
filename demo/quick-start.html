@@ -1,53 +1,26 @@
-<!doctype html>
 <html>
-<head>
-    <title>Dash.js Rocks</title>
-    <style>
-        video {
-            width: 640px;
-            height: 360px;
-        }
-    </style>
-</head>
-<body>
-<div>
-    <video id="videoPlayer" controls></video>
-    <p id="version"></p>
-    <h3>download info:</h3>
-    <p id="info"></p>
-    <table id="table-body">
-        <tbody ></tbody>
-    </table>
-</div>
+<video id="videoPlayer" controls></video>
+<p id="version"></p>
+<h3>download info:</h3>
+<p id="peers"></p>
+<p id="info"></p>
 <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
-<script src="../dist/dashjs-p2p-engine.min.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
 <script>
-
     var url = "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd";
     var player = dashjs.MediaPlayer().create()
+    document.querySelector('#version').innerText = `dash.js version: ${player.getVersion()} p2p version: ${P2PEngineDash.version}`;
     var p2pConfig = {
-        // logLevel: 'debug',
+        logLevel: 'debug',
     }
-    new P2PEngineDash(player, p2pConfig);
+    var engine = new P2PEngineDash(player, p2pConfig);
     player.initialize(document.querySelector("#videoPlayer"), url, true);
-    player.on(dashjs.MediaPlayer.events.FRAGMENT_LOADING_COMPLETED, ({ request }) => {
-        var source = undefined;
-        if (request.loadByHTTP === true) {
-            source = 'HTTP';
-        } else if (request.loadByP2P === true) {
-            source = 'P2P';
-        }
-        addToTable(request.representationId, request.bytesTotal, request.mediaType, source);
-    });
-    document.querySelector('#version').innerText = `dash.js version: ${player.getVersion()}  cdnbye version: ${P2PEngineDash.version}`;
-    function addToTable(url, downloaded, type, source) {
-        var infoStr = `download ${url}(size:${downloaded}B type:${type}) by ${source}`;
-        document.querySelector('#table-body tbody').innerHTML +=
-            `<tr style="text-align: center">
-                    <td>${infoStr}</td>
-                </tr>`
-    };
+    engine.on('stats', function (stats) {
+        var total = stats.totalHTTPDownloaded + stats.totalP2PDownloaded;
+        document.querySelector('#info').innerText = `p2p ratio: ${Math.round(stats.totalP2PDownloaded / total * 100)}%   saved traffic: ${Math.round(stats.totalP2PDownloaded)}KB upload: ${Math.round(stats.totalP2PUploaded)}KB`;
+    })
+    engine.on('peers', function (peers) {
+        document.querySelector('#peers').innerText = `peers: ${peers.length}`;
+    })
 </script>
-</body>
 </html>

@@ -1,0 +1,37 @@
+<link href="http://vjs.zencdn.net/5.19.2/video-js.css" rel="stylesheet">
+<video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls></video>
+<script src="http://vjs.zencdn.net/5.19.2/video.js"></script>
+
+<!-- Dash.js -->
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<!-- cdnbye dash.js plugin script -->
+<script src="../dist/dashjs-p2p-engine.min.js"></script>
+<!-- videojs-contrib-dash script -->
+<script src="../dist/videojs-dash.min.js"></script>
+
+<script>
+    var player = videojs('example-video', {
+        html5: {
+            dash: {
+                // dash.js options
+            }
+        }
+    });
+
+    player.ready(function() {
+        player.src({
+            src: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd',
+            type: 'application/dash+xml'
+        });
+        player.play();
+    });
+
+    var myCustomCallback = function(player, mediaPlayer) {
+        var p2pConfig = {
+            // logLevel: 'debug',
+        };
+        var engine = new P2PEngineDash(mediaPlayer, p2pConfig);
+    };
+
+    videojs.Html5DashJS.hook('beforeinitialize', myCustomCallback);
+</script>
