@@ -9,7 +9,7 @@
 </p>
 
 
-CDNBye dashjs-p2p-engine implements [WebRTC](https://en.wikipedia.org/wiki/WebRTC) datachannel to scale live/vod video streaming by peer-to-peer network using bittorrent-like protocol. The forming peer network can be layed over other CDNs or on top of the origin server. Powered by [dash.js](https://github.com/Dash-Industry-Forum/dash.js), it can play MPEG-dash on any platform with many popular HTML5 players such as video.js, JWPlayer and Flowplayer.
+CDNBye dashjs-p2p-engine implements [WebRTC](https://en.wikipedia.org/wiki/WebRTC) datachannel to scale live/vod video streaming by peer-to-peer network using bittorrent-like protocol. The forming peer network can be layed over other CDNs or on top of the origin server. Powered by [dash.js](https://github.com/Dash-Industry-Forum/dash.js), it can play MPEG-dash on PC and mobile.
 ## Features
 - WebRTC data channels for lightweight peer-to-peer communication with no plugins
 - Support live and VOD streams over MPEG-dash protocol
