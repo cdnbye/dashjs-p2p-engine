@@ -4,11 +4,11 @@
 <!-- Dash.js -->
 <script src="https://cdn.dashjs.org/v3.0.2/dash.all.min.js"></script>
 <!-- cdnbye dash.js plugin script -->
-<!--<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>-->
-<script src="../dist/dashjs-p2p-engine.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
+<!--<script src="../dist/dashjs-p2p-engine.min.js"></script>-->
 <!-- videojs-contrib-dash script -->
-<!--<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest/dist/videojs-dash.min.js"></script>-->
-<script src="../dist/videojs-dash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest/dist/videojs-dash.min.js"></script>
+<!--<script src="../dist/videojs-dash.min.js"></script>-->
 
 <script>
     var player = videojs('example-video', {
@@ -18,7 +18,6 @@
             }
         }
     });
-
     player.ready(function() {
         player.src({
             src: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd',
@@ -26,13 +25,11 @@
         });
         player.play();
     });
-
     var myCustomCallback = function(player, mediaPlayer) {
         var p2pConfig = {
             // logLevel: 'debug',
         };
         var engine = new P2PEngineDash(mediaPlayer, p2pConfig);
     };
-
     videojs.Html5DashJS.hook('beforeinitialize', myCustomCallback);
 </script>

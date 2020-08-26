@@ -14,12 +14,17 @@
 <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0"></script>
 <script>
     var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
+    var type = 'customDash';
+    var isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
+    if(navigator.userAgent.match(/iPad|iPhone|iPod|Baidu|UCBrowser/i) || isQQBrowser) {
+        type = 'normal';
+    }
     const dp = new DPlayer({
         container: document.getElementById('dplayer'),
         autoplay: true,
         video: {
             url: 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd',
-            type: 'customDash',
+            type: type,
             hotkey: true,        // 移动端全屏时向右划动快进，向左划动快退。
             customType: {
                 'customDash': function (video) {

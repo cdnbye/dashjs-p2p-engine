@@ -16,7 +16,6 @@ CDNBye dashjs-p2p-engine implements [WebRTC](https://en.wikipedia.org/wiki/WebRT
 - Very easy to integrate with an existing dash.js project
 - Seamlessly fallback to normal server usage if a browser doesn't support WebRTC
 - Highly configurable for users
-- Support most popular HTML5 players such as video.js、Clappr、Flowplayer
 - Efficient scheduling policies to enhance the performance of P2P streaming
 - Use IP database to group up peers by ISP and regions
 - API frozen, new releases will not break your code
