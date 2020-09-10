@@ -14,10 +14,9 @@
 <script src="https://cdn.jsdelivr.net/npm/dplayer@1.25.0"></script>
 <script>
     var _peerId = '', _peerNum = 0, _totalP2PDownloaded = 0, _totalP2PUploaded = 0;
-    var type = 'customDash';
-    var isQQBrowser = /MQQBrowser/i.test(navigator.userAgent) && !/\sQQ/i.test(navigator.userAgent);
-    if(navigator.userAgent.match(/iPad|iPhone|iPod|Baidu|UCBrowser/i) || isQQBrowser) {
-        type = 'normal';
+    var type = 'normal';
+    if(P2PEngineDash.isSupported()) {
+        type = 'customDash';
     }
     const dp = new DPlayer({
         container: document.getElementById('dplayer'),
