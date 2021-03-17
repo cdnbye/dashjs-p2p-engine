@@ -1,0 +1,29 @@
+<!-- head section -->
+<!-- skin -->
+<link rel="stylesheet" href="//cdn.flowplayer.com/releases/native/stable/style/flowplayer.css">
+<!-- CDNBye plugin -->
+<script src="//cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
+<!-- flowplayer -->
+<script src="//cdn.flowplayer.com/releases/native/stable/flowplayer.min.js"></script>
+<script src="//cdn.flowplayer.com/releases/native/stable/plugins/dash.min.js"></script>
+<!-- body section -->
+<div id="player"></div>
+<p id="version"></p>
+<h3>download info:</h3>
+<p id="info"></p>
+<script>
+    document.querySelector('#version').innerText = `cdnbye version: ${P2PEngineDash.version}`;
+
+    var player = flowplayer('#player', {
+            src: "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd",
+        }
+    )
+
+    var engine = new P2PEngineDash(player.dash, {
+        // logLevel: "debug",
+    });
+    engine.on('stats', function (stats) {
+        var total = stats.totalHTTPDownloaded + stats.totalP2PDownloaded;
+        document.querySelector('#info').innerText = `p2p ratio: ${Math.round(stats.totalP2PDownloaded/total*100)}%, saved traffic: ${stats.totalP2PDownloaded}KB, uploaded: ${stats.totalP2PUploaded}KB`;
+    })
+</script>
