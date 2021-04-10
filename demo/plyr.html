@@ -1,0 +1,45 @@
+<div class="container">
+    <video controls crossorigin playsinline></video>
+</div>
+<h3>download info:</h3>
+<p id="info"></p>
+<link rel="stylesheet" href="//cdn.plyr.io/3.4.7/plyr.css">
+<script src="//cdn.plyr.io/3.4.7/plyr.js"></script>
+<script src="https://cdn.dashjs.org/v3.2.1/dash.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
+<style>
+    .container {
+        margin: 50px auto;
+        max-width: 1500px;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const source = 'https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd';
+        // For more dash options, see https://github.com/Dash-Industry-Forum/dash.js
+        const dash = dashjs.MediaPlayer().create();
+
+        if (P2PEngineDash.isSupported()) {
+            var p2pConfig = {
+                // logLevel: 'debug',
+                // Other p2pConfig options if applicable
+            };
+            var engine = new P2PEngineDash(dash, p2pConfig);
+            engine.on('stats', function (stats) {
+                var total = stats.totalHTTPDownloaded + stats.totalP2PDownloaded;
+                document.querySelector('#info').innerText = `p2p ratio: ${Math.round(stats.totalP2PDownloaded/total*100)}%, saved traffic: ${stats.totalP2PDownloaded}KB, uploaded: ${stats.totalP2PUploaded}KB`;
+            })
+        }
+
+        const video = document.querySelector('video');
+        dash.initialize(video, source, true);
+
+        // Update caption tracks after initializing Plyr to get the generated captions
+        // For more options see: https://github.com/sampotts/plyr/#options
+        const player = new Plyr(video, {captions: {active: true, update: true}});
+
+        // Expose player and dash so they can be used from the console
+        window.player = player;
+        window.dash = dash;
+    });
+</script>
