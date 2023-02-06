@@ -21,6 +21,7 @@
 
     var engine = new P2PEngineDash(player.dash, {
         // logLevel: "debug",
+        // token: YOUR_TOKEN
     });
     engine.on('stats', function (stats) {
         var total = stats.totalHTTPDownloaded + stats.totalP2PDownloaded;
