@@ -39,7 +39,7 @@ Include the pre-built script of latest version:
 ```
 
 ## API and Configuration
-See [API.md](https://www.cdnbye.com/en/views/dash/API.html)
+See [API.md](https://docs.swarmcloud.net/dash/API)
 
 ## Console
 Register your domain in `https://oms.cdnbye.com`, where you can view p2p-related information.
@@ -50,7 +50,7 @@ Register your domain in `https://oms.cdnbye.com`, where you can view p2p-related
 - [mp4-p2p-engine](https://github.com/cdnbye/mp4-p2p-engine) - Web Video Delivery Technology with No Plugins for MP4.
 
 ## FAQ
-We have collected some [frequently asked questions](https://www.hdtvcloud.com/en/views/FAQ.html). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://docs.swarmcloud.net/faq). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contact Us
 Email: service@cdnbye.com
