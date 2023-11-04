@@ -39,7 +39,7 @@ Include the pre-built script of latest version:
 ```
 
 ## API and Configuration
-See [API.md](https://docs.swarmcloud.net/dash/API)
+See [API.md](https://docs.swarmcloud.net/dashjs/API)
 
 ## Console
 Register your domain in `https://oms.cdnbye.com`, where you can view p2p-related information.
