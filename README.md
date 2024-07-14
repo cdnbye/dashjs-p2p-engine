@@ -3,8 +3,8 @@
 <h1 align="center"><a href="" target="_blank" rel="noopener noreferrer"><img width="250" src="https://www.swarmcloud.net/img/logo.png" alt="cdnbye logo"></a></h1>
 <h4 align="center">Let your viewers become your unlimitedly scalable CDN.</h4>
 <p align="center">
-  <a href="https://www.npmjs.com/package/cdnbye-dash"><img src="https://img.shields.io/npm/v/cdnbye-dash.svg?style=flat" alt="npm"></a>
-  <a href="https://www.jsdelivr.com/package/npm/cdnbye-dash"><img src="https://data.jsdelivr.com/v1/package/npm/cdnbye-dash/badge" alt="jsdelivr"></a>
+  <a href="https://www.npmjs.com/package/@swarmcloud/dashjs"><img src="https://img.shields.io/npm/v/@swarmcloud/dashjs.svg?style=flat" alt="npm"></a>
+  <a href="https://www.jsdelivr.com/package/npm/@swarmcloud/dashjs"><img src="https://data.jsdelivr.com/v1/package/npm/@swarmcloud/dashjs/badge" alt="jsdelivr"></a>
 </p>
 
 
@@ -35,7 +35,7 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ✔ |
 ## Include
 Include the pre-built script of latest version:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@swarmcloud/dashjs"></script>
 ```
 
 ## API and Configuration

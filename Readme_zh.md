@@ -4,8 +4,8 @@
 <h4 align="center">Save Your Bandwidth using WebRTC.</h4>
 <h4 align="center">视频网站省流量&加速插件.</h4>
 <p align="center">
-    <a href="https://www.npmjs.com/package/cdnbye-dash"><img src="https://img.shields.io/npm/v/cdnbye-dash.svg?style=flat" alt="npm"></a>
-    <a href="https://www.jsdelivr.com/package/npm/cdnbye-dash"><img src="https://data.jsdelivr.com/v1/package/npm/cdnbye-dash/badge" alt="jsdelivr"></a>
+    <a href="https://www.npmjs.com/package/@swarmcloud/dashjs"><img src="https://img.shields.io/npm/v/@swarmcloud/dashjs.svg?style=flat" alt="npm"></a>
+    <a href="https://www.jsdelivr.com/package/npm/@swarmcloud/dashjs"><img src="https://data.jsdelivr.com/v1/package/npm/@swarmcloud/dashjs/badge" alt="jsdelivr"></a>
 </p>
 
 P2P技术使观看相同内容的用户之间可以相互分享数据，不仅能效降低视频/直播网站的带宽成本，还可以提升用户的播放体验，降低卡顿、二次缓存的发生率。
@@ -35,7 +35,7 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ✔ |
 ## 集成
 通过script标签引入最新版本：
 ```html
-<script src="https://cdn.jsdelivr.net/npm/cdnbye-dash@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@swarmcloud/dashjs"></script>
 ```
 
 ## API文档
