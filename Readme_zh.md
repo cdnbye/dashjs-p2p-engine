@@ -42,7 +42,7 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ✔ |
 参见 [API.md](https://www.cdnbye.com/cn/dashjs/API.html)
 
 ## 后台管理系统
-在接入P2P插件后，访问`https://www.cdnbye.com/oms`，注册并绑定域名，即可查看该域名的P2P流量、在线人数、用户地理分布等信息。
+在接入P2P插件后，访问[dashboard](https://dash.swarmcloud.net)，注册并绑定域名，即可查看该域名的P2P流量、在线人数、用户地理分布等信息。
 
 ## 相关项目
 - [shaka-p2p-engine](https://github.com/cdnbye/shaka-p2p-engine) - 同时支持HLS和Mpeg-Dash格式。
