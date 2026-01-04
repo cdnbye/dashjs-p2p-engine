@@ -39,7 +39,7 @@ CDNBye | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ❌ | ✔ |
 ```
 
 ## API文档
-参见 [API.md](https://www.cdnbye.com/cn/dashjs/API.html)
+参见 [API.md](https://www.cdnbye.com/dashjs/API.html)
 
 ## 后台管理系统
 在接入P2P插件后，访问[dashboard](https://dash.swarmcloud.net)，注册并绑定域名，即可查看该域名的P2P流量、在线人数、用户地理分布等信息。
