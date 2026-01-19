@@ -39,10 +39,10 @@ Include the pre-built script of latest version:
 ```
 
 ## API and Configuration
-See [API.md](https://docs.swarmcloud.net/dashjs/API)
+See [API.md](https://docs.swarmcloud.net/dashjs/API?utm_source=github)
 
 ## Console
-Register your domain in [dashboard](https://dash.swarmcloud.net), where you can view p2p-related information.
+Register your domain in [dashboard](https://dash.swarmcloud.net?source=github), where you can view p2p-related information.
 
 ## Related Projects
 - [shaka-p2p-engine](https://github.com/cdnbye/shaka-p2p-engine) - P2P engine for Shaka Player.
@@ -50,7 +50,7 @@ Register your domain in [dashboard](https://dash.swarmcloud.net), where you can 
 - [mp4-p2p-engine](https://github.com/cdnbye/mp4-p2p-engine) - Web Video Delivery Technology with No Plugins for MP4.
 
 ## FAQ
-We have collected some [frequently asked questions](https://docs.swarmcloud.net/faq). Before reporting an issue, please search if the FAQ has the answer to your problem.
+We have collected some [frequently asked questions](https://docs.swarmcloud.net/faq?utm_source=github). Before reporting an issue, please search if the FAQ has the answer to your problem.
 
 ## Contact Us
 Email: service@cdnbye.com
